@@ -1,5 +1,7 @@
 # Swiss Army Vape Tools
 
+[🚀 Live Demo](https://azisatria.github.io/swiss-army-vape-tools/)
+
 A comprehensive, all-in-one web-based toolkit for vaping enthusiasts. This simple app provides essential calculators for Ohm's Law, battery safety, coil building, e-liquid mixing, and heat flux estimation, everything you need to build and vape safely.
 
 ## Background
