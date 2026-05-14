@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiss Army Vape Tools</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Swiss Army Vape Tools</h1>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="ohms-law">Ohm's Law</button>
+            <button class="nav-btn" data-section="battery-safety">Battery Safety</button>
+            <button class="nav-btn" data-section="coil-wrapping">Coil Wrapping</button>
+<button class="nav-btn" data-section="e-liquid-mixer">E-Liquid Mixer</button>
+             <button class="nav-btn" data-section="heat-flux">Sweet Spot / Heat Flux</button>
+         </nav>
+
+        <main class="content">
+            <section id="ohms-law" class="tool-section active">
+                <h2>Ohm's Law Calculator</h2>
+                <div class="calc-form">
+                    <div class="input-group">
+                        <label for="voltage">Voltage (V):</label>
+                        <input type="number" id="voltage" placeholder="e.g. 3.7" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="current">Current (A):</label>
+                        <input type="number" id="current" placeholder="e.g. 1.0" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="resistance">Resistance (Ω):</label>
+                        <input type="number" id="resistance" placeholder="e.g. 0.2" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="power">Power (W):</label>
+                        <input type="number" id="power" placeholder="e.g. 15" step="1">
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="calculateOhmsLaw()">Calculate</button>
+                        <button onclick="clearOhmsLaw()">Clear</button>
+                    </div>
+                    <div id="ohms-law-result" class="result"></div>
+                </div>
+            </section>
+
+            <section id="battery-safety" class="tool-section">
+                <h2>Battery Safety Calculator</h2>
+                <div class="calc-form">
+                    <div class="input-group">
+                        <label for="battery-voltage">Battery Voltage (V):</label>
+                        <input type="number" id="battery-voltage" placeholder="e.g. 3.7" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="battery-capacity">Battery Capacity (mAh):</label>
+                        <input type="number" id="battery-capacity" placeholder="e.g. 2500" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="battery-resistance">Coil Resistance (Ω):</label>
+                        <input type="number" id="battery-resistance" placeholder="e.g. 0.2" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="battery-watts">Desired Wattage (W):</label>
+                        <input type="number" id="battery-watts" placeholder="e.g. 50" step="1">
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="calculateBatterySafety()">Calculate</button>
+                        <button onclick="clearBatterySafety()">Clear</button>
+                    </div>
+                    <div id="battery-result" class="result"></div>
+                </div>
+            </section>
+
+            <section id="coil-wrapping" class="tool-section">
+                <h2>Coil Wrapping Calculator</h2>
+                <div class="calc-form">
+                    <div class="input-group">
+                        <label for="wire-type">Wire Type:</label>
+                        <select id="wire-type">
+                            <option value="kanthal">Kanthal A1</option>
+                            <option value="nichrome80">Nichrome 80</option>
+                            <option value="nichrome60">Nichrome 60</option>
+                            <option value="stainless">Stainless Steel 316L</option>
+                            <option value="nickel">Nickel (Ni200)</option>
+                            <option value="titanium">Titanium</option>
+                            <option value="graphene">Graphene</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="wire-gauge">Wire Gauge (AWG):</label>
+                        <select id="wire-gauge">
+                            <option value="12">12 AWG</option>
+                            <option value="14">14 AWG</option>
+                            <option value="16">16 AWG</option>
+                            <option value="18">18 AWG</option>
+                            <option value="20">20 AWG</option>
+                            <option value="22">22 AWG</option>
+                            <option value="24">24 AWG</option>
+                            <option value="26">26 AWG</option>
+                            <option value="28">28 AWG</option>
+                            <option value="30">30 AWG</option>
+                            <option value="32">32 AWG</option>
+                            <option value="34">34 AWG</option>
+                            <option value="36">36 AWG</option>
+                            <option value="38">38 AWG</option>
+                            <option value="40">40 AWG</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="coil-diameter">Coil Inner Diameter (mm):</label>
+                        <input type="number" id="coil-diameter" placeholder="e.g. 3.0" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="number-of-wraps">Number of Wraps:</label>
+                        <input type="number" id="number-of-wraps" placeholder="e.g. 6" step="1" min="1">
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="calculateCoilLength()">Calculate</button>
+                        <button onclick="clearCoilWrapping()">Clear</button>
+                    </div>
+                    <div id="coil-result" class="result"></div>
+                </div>
+            </section>
+
+            <section id="e-liquid-mixer" class="tool-section">
+                <h2>E-Liquid Mixer</h2>
+                <div class="calc-form">
+                    <div class="input-group">
+                        <label for="target-ml">Target Volume (mL):</label>
+                        <input type="number" id="target-ml" placeholder="e.g. 30" step="1" min="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="nic-base-strength">Nicotine Base Strength (mg/mL):</label>
+                        <input type="number" id="nic-base-strength" placeholder="e.g. 48" step="1">
+                    </div>
+                    <div class="input-group">
+                        <label for="target-nic-strength">Target Nicotine Strength (mg/mL):</label>
+                        <input type="number" id="target-nic-strength" placeholder="e.g. 3" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="pg-ratio">PG Ratio (%):</label>
+                        <input type="number" id="pg-ratio" placeholder="e.g. 50" step="5" min="0" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label for="vg-ratio">VG Ratio (%):</label>
+                        <input type="number" id="vg-ratio" placeholder="e.g. 50" step="5" min="0" max="100">
+                    </div>
+                    <div class="btn-group">
+                        <button onclick="calculateELiquidMixer()">Calculate</button>
+                        <button onclick="clearELiquidMixer()">Clear</button>
+                    </div>
+                    <div id="e-liquid-result" class="result"></div>
+                </div>
+            </section>
+
+            <section id="heat-flux" class="tool-section">
+                 <h2>Sweet Spot / Heat Flux Estimator</h2>
+                 <p style="font-size:13px;color:#64748b;margin-bottom:14px;">Rough estimator to calculate heat flux (W/mm²) — find out if your vape is cool, warm, or scorching hot.</p>
+                 <div class="calc-form">
+                     <div class="input-group">
+                         <label for="hf-wire-type">Wire Type:</label>
+                         <select id="hf-wire-type">
+                             <option value="kanthal">Kanthal A1</option>
+                             <option value="nichrome80">Nichrome 80</option>
+                             <option value="nichrome60">Nichrome 60</option>
+                             <option value="stainless">Stainless Steel 316L</option>
+                             <option value="nickel">Nickel (Ni200)</option>
+                             <option value="titanium">Titanium</option>
+                         </select>
+                     </div>
+                     <div class="input-group">
+                         <label for="hf-wire-gauge">Wire Gauge (AWG):</label>
+                         <select id="hf-wire-gauge">
+                             <option value="12">12 AWG</option>
+                             <option value="14">14 AWG</option>
+                             <option value="16">16 AWG</option>
+                             <option value="18">18 AWG</option>
+                             <option value="20">20 AWG</option>
+                             <option value="22">22 AWG</option>
+                             <option value="24">24 AWG</option>
+                             <option value="26">26 AWG</option>
+                             <option value="28" selected>28 AWG</option>
+                             <option value="30">30 AWG</option>
+                             <option value="32">32 AWG</option>
+                             <option value="34">34 AWG</option>
+                             <option value="36">36 AWG</option>
+                             <option value="38">38 AWG</option>
+                             <option value="40">40 AWG</option>
+                         </select>
+                     </div>
+                     <div class="input-group">
+                         <label for="hf-coil-diameter">Coil Inner Diameter (mm):</label>
+                         <input type="number" id="hf-coil-diameter" placeholder="e.g. 3.0" step="0.5" min="0.5">
+                     </div>
+                     <div class="input-group">
+                         <label for="hf-number-of-wraps">Number of Wraps:</label>
+                         <input type="number" id="hf-number-of-wraps" placeholder="e.g. 6" step="1" min="1">
+                     </div>
+                     <div class="input-group">
+                         <label for="hf-wattage">Wattage (W):</label>
+                         <input type="number" id="hf-wattage" placeholder="e.g. 30" step="0.5" min="0.1">
+                     </div>
+                     <div class="btn-group">
+                         <button onclick="calculateHeatFlux()">Estimate Heat Flux</button>
+                         <button onclick="clearHeatFlux()">Clear</button>
+                     </div>
+                     <div id="heat-flux-result" class="result"></div>
+                     <div id="heat-flux-bar" class="hf-bar-container" style="display:none;">
+                         <div class="hf-bar-track">
+                             <div id="hf-bar-fill" class="hf-bar-fill"></div>
+                         </div>
+                         <div class="hf-bar-labels">
+                             <span>❄️ Cool</span>
+                             <span>🔥 Hot</span>
+                         </div>
+                     </div>
+                 </div>
+             </section>
+         </main>
+
+        <footer>
+            <p>Swiss Army Vape Tools &copy; 2026 | Use responsibly | Vape safely</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
